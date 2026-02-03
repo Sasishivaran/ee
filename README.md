@@ -1,6 +1,7 @@
-# Component catalog
+# RAG System Component Catalog
 
-A concise description of each service in the RAG system.
+This document provides a concise description of each service in the Retrieval-Augmented Generation (RAG) system.  
+Learners will use this catalog alongside the architecture diagram and metrics file to analyze system performance and reliability.
 
 ---
 
@@ -36,7 +37,7 @@ Key responsibilities:
 - Querying the Vector Index DB  
 - Returning top-K similar vectors  
 
-Deployment note: single instance → limited throughput and potential latency hotspot.
+**Deployment note:** Single instance → limited throughput and potential latency hotspot.
 
 ---
 
@@ -50,7 +51,7 @@ Characteristics:
 - No replication or failover  
 - High CPU usage under load  
 
-Risk: this is a single point of failure and a major contributor to retrieval latency.
+**Risk:** This is a single point of failure and a major contributor to retrieval latency.
 
 ---
 
@@ -60,7 +61,7 @@ Stores raw documents and metadata used for grounding LLM responses.
 
 The Orchestrator fetches documents from this store after receiving vector search results.
 
-Deployment note: single primary node → synchronous reads and limited throughput.
+**Deployment note:** Single primary node → synchronous reads and limited throughput.
 
 ---
 
@@ -68,7 +69,7 @@ Deployment note: single primary node → synchronous reads and limited throughpu
 
 Caches frequent queries to reduce load on the Vector Search Service and Document Store.
 
-Deployment note: single instance → no redundancy and potential failure point.
+**Deployment note:** Single instance → no redundancy and potential failure point.
 
 ---
 
@@ -79,3 +80,5 @@ External large language model endpoint used to generate final responses.
 The Orchestrator sends retrieved context plus the user query to this service.
 
 Latency is generally stable but depends on external provider performance.
+
+---
